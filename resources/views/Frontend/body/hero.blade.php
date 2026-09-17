@@ -4,24 +4,30 @@
          <div class="row gy-5" data-aos="fade-in">
              <div
                  class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center text-center text-lg-start">
-                 <h2>Hi there! I'm<span> Shuvo Bhowmik</span></h2>
+                 <h2>Hi there! I'm<span> Laduni Prada</span></h2>
                  <p style="font-size : 20px">
-                     {{ $hero->description }}
+                    {{ $hero?->description ?? '' }}
                  </p>
                  <div class="d-flex cv-button justify-content-center justify-content-lg-start">
-                     <a href="/download-cv" class="btn-get-started">
+                     <a href="{{ asset('Frontend/assets/cv/CV_Laduni_Prada.pdf') }}"
+                        class="btn-get-started"
+                        download>
 
-                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                             stroke-linejoin="round" class="feather feather-download">
-                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                             <polyline points="7 10 12 15 17 10"></polyline>
-                             <line x1="12" y1="15" x2="12" y2="3"></line>
-                         </svg>
-                         Download CV
-                     </a>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                class="feather feather-download">
 
-                     <a style="margin-left: 15px" href="https://github.com/Shuvouits?tab=repositories"
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+
+                            </svg>
+
+                            Download CV
+                        </a>
+
+                     <a style="margin-left: 15px" href="https://github.com/Prdazk"
                          class="btn-get-started">
 
                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -41,10 +47,11 @@
                  </div>
              </div>
              <div class="col-lg-6  order-1 order-lg-2 ">
-                 <img src="{{ asset('upload/' . $hero->avatar) }}"
-                 style="width: 400px; height : 400px; border-radius: 200px" class="img-fluid personal-avatar" alt=""
-                     data-aos="zoom-out" data-aos-delay="100">
-             </div>
+                <img src="{{ asset('Frontend/assets/img/Profil.png') }}"
+                style="width: 400px; height: 450px; object-fit: cover; border-radius: 0; -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%), linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%); -webkit-mask-composite: source-in; mask-image: linear-gradient(to bottom, black 60%, transparent 100%), linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%); mask-composite: intersect;" 
+                class="img-fluid personal-avatar" alt="Laduni Prada"
+                    data-aos="zoom-out" data-aos-delay="100">
+            </div>
          </div>
      </div>
 
@@ -65,8 +72,6 @@
                          </div>
                      </div><!--End Icon Box -->
                  @endforeach
-
-
 
              </div>
          </div>

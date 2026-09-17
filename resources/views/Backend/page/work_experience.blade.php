@@ -8,21 +8,21 @@
     <div class="page-content">
         <!--breadcrumb-->
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-            <div class="breadcrumb-title pe-3">All Experience</div>
+            <div class="breadcrumb-title pe-3">Semua Pengalaman</div>
             
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">All Experience</li>
+                        <li class="breadcrumb-item active" aria-current="page">Semua Pengalaman</li>
                     </ol>
                 </nav>
             </div>
             <div class="ms-auto">
                 <div class="btn-group">
                     <a href="/add/banner" class="btn btn-primary" data-bs-toggle="modal"
-                        data-bs-target="#exampleVerticallycenteredModal">Add Experience</a>
+                        data-bs-target="#exampleVerticallycenteredModal">Tambah Pengalaman</a>
                 </div>
 
             
@@ -32,9 +32,9 @@
                     <div class="modal-dialog modal-dialog-centered modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title">Insert Data</h5>
+                                <h5 class="modal-title">Masukkan Data</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
+                                    aria-label="Tutup"></button>
                             </div>
 
                             <div class="modal-body">
@@ -43,41 +43,41 @@
                                     {{ @csrf_field() }}
 
                                     <div class="col-12">
-                                        <label for="cname" class="form-label">Company Name</label>
+                                        <label for="cname" class="form-label">Nama Perusahaan</label>
                                         <input type="text" class="form-control" name="company_name" id="cname"
-                                            placeholder="Company Name">
+                                            placeholder="Nama Perusahaan">
                                     </div>
                                     <br>
 
                                     <div class="col-12">
-                                        <label for="designation" class="form-label">Designation</label>
+                                        <label for="designation" class="form-label">Jabatan</label>
                                         <input type="text" class="form-control" name="designation" id="designation"
-                                            placeholder="Designation">
+                                            placeholder="Jabatan">
                                     </div>
 
                                     <br>
 
                                     <div class="mb-3">
-                                        <label class="form-label">Date Range</label>
+                                        <label class="form-label">Rentang Tanggal</label>
                                         <input type="text" name="date" class="form-control date-range" />
                                     </div>
 
                                     <div class="mb-3">
-                                        <label class="form-label">Add Responsiblity</label>
-                                        <textarea row="6" class="form-control" name="responsiblity" id="editor"></textarea>
+                                        <label class="form-label">Tambah Tanggung Jawab</label>
+                                        <textarea rows="6" class="form-control" name="responsiblity" id="editor"></textarea>
                                     </div>
 
                                    
 
 
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-primary">Kirim</button>
 
                                 </form>
 
                             </div>
 
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
 
                             </div>
                         </div>
@@ -96,18 +96,15 @@
                     <table id="example" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Sl</th>
-                                <th>Company Name</th>
-                                <th>Designation</th>
-                                <th>Date</th>
-                                <th>Responsiblity</th>
-                                <th>Action</th>
-                            </tr>
+                                <th>No</th>             
+                                    <th>Nama Perusahaan</th>  
+                                    <th>Jabatan</th>         
+                                    <th>Tanggal</th>          
+                                    <th>Tanggung Jawab</th>   
+                                    <th>Aksi</th>              
+                                </tr>
                         </thead>
                         <tbody>
-
-                            
-
 
                             @foreach ($data as $index => $item)
                                 <tr>
@@ -116,13 +113,13 @@
                                     <td>{{ $item->designation }} </td>
 
                                     @php
-                                    // Assuming $item->date is in the format "2024-04-16 to 2024-04-25"
+                                    // Diasumsikan $item->date dalam format "2024-04-16 to 2024-04-25"
                                     $dateRange = explode(' to ', $item->date);
                                     $start = \Carbon\Carbon::parse($dateRange[0])->format('Y-M');
                                     $end = \Carbon\Carbon::parse($dateRange[1])->format('Y-M');
                                 @endphp
 
-                                    <td>{{ $start }} To {{ $end }}</td>
+                                    <td>{{ $start }} s/d {{ $end }}</td>
 
                                     <td>{!! $item->responsiblity !!}</td>
 
@@ -182,15 +179,19 @@
 
     
 
-    <script>
+<script>
         ClassicEditor
-                .create( document.querySelector( '#editor' ) )
-                .then( editor => {
-                        console.log( editor );
-                } )
-                .catch( error => {
-                        console.error( error );
-                } );
+    .create(document.querySelector('#editor'))
+    .then(editor => {
+        const form = document.querySelector('#experienceForm');
+
+        form.addEventListener('submit', function() {
+            document.querySelector('#editor').value = editor.getData();
+        });
+    })
+    .catch(error => {
+        console.error(error);
+    });
 </script>
 
 
@@ -204,7 +205,7 @@
         // Reset input file
         $('input[type="file"][name="avatar"]').val('');
 
-        // Image preview
+        // Pratinjau gambar
         $('input[type="file"][name="avatar"]').on('change', function() {
 
             var img_path = $(this)[0].value;
@@ -227,7 +228,7 @@
                     img_holder.show();
                     reader.readAsDataURL($(this)[0].files[0]);
                 } else {
-                    $(img_holder).html('This browser does not support FileReader');
+                    $(img_holder).html('Browser ini tidak mendukung FileReader');
                 }
             } else {
                 $(img_holder).empty();
@@ -241,8 +242,8 @@
             e.preventDefault();
             var id = $(this).data('id');
             swal({
-                    title: "Are you sure?",
-                    text: "Once deleted, you will not be able to recover this item!",
+                    title: "Apakah Anda yakin?",
+                    text: "Setelah dihapus, Anda tidak akan bisa memulihkan item ini!",
                     icon: "warning",
                     buttons: true,
                     dangerMode: true,
@@ -250,24 +251,24 @@
                 .then((willDelete) => {
                     if (willDelete) {
                         $.ajax({
-                            url: '/admin/delete-experience/' + id, // Update the URL to match your route
+                            url: '/admin/delete-experience/' + id, // Sesuaikan URL dengan route Anda
                             type: 'DELETE',
                             data: {
                                 "_token": "{{ csrf_token() }}"
                             },
                             success: function(response) {
-                                swal("Poof! Your item has been deleted!", {
+                                swal("Berhasil! Item Anda telah dihapus!", {
                                     icon: "success",
                                 });
-                                // Update the table after successful deletion
+                                // Perbarui tabel setelah berhasil menghapus
                                 window.location.reload();
                             },
                             error: function(xhr) {
-                                swal("Oops!", "Something went wrong!", "error");
+                                swal("Ups!", "Terjadi kesalahan!", "error");
                             }
                         });
                     } else {
-                        swal("Your item is safe!");
+                        swal("Item Anda aman!");
                     }
                 });
         });

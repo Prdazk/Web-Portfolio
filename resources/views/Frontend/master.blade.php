@@ -50,58 +50,58 @@
 
 <style>
     .topbar {
-        background: #2d113b;
-
+        background: #163d30;
     }
 
     .header {
-        background: #2d113b !important;
+        background: #163d30 !important;
     }
 
     .hero {
-        background: #2d113b !important
+        background: #17402f !important
     }
 
     .icon-box {
-        background: #361446 !important;
+        background: #235542 !important;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .icon-box:hover {
+        background: #2a6350 !important;
     }
 
     .contact .info-container {
-
-        background: #2d113b !important;
-
+        background: #163d30 !important;
     }
 
     .contact .info-item {
+        background: #235542 !important
+    }
 
-        background: #361446 !important
+    .contact .info-item i {
+        background-color: rgba(255, 255, 255, 0.1);
     }
 
     .contact .php-email-form button[type=submit] {
-        background: #361446 !important;
+        background: #367559 !important;
+    }
 
+    .contact .php-email-form button[type=submit]:hover {
+        background: #3f8465 !important;
     }
 
     .breadcrumbs .page-header {
-
-        background: #2d113b;
-
+        background: #163d30;
     }
 
     .footer {
-
-        background: #361446 !important
+        background: #12332a !important
     }
 
-
     @media (max-width: 1279px) {
-
         .navbar ul {
-
-            background: #361446 !important;
-
+            background: #12332a !important;
         }
-
     }
 </style>
 

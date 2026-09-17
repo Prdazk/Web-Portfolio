@@ -4,47 +4,47 @@
         <div class="row gy-4">
             <div class="col-lg-5 col-md-12 footer-info">
                 <a href="/" class="logo d-flex align-items-center">
-                    <span>Stack-Developer</span>
+                    <span>Web-Developer</span>
                 </a>
-                <p>"Transforming ideas into reality through code. Let's build something amazing together!"</p>
+                <p>Anda punya visi. Saya punya cara mewujudkannya</p>
                 <div class="social-links d-flex mt-4">
                     <a href="https://twitter.com/Shuvo09829167" class="twitter"><i class="bi bi-twitter"></i></a>
         <a href="https://www.facebook.com/shuvo.bhowmik.3" class="facebook"><i class="bi bi-facebook"></i></a>
-        <a href="https://www.instagram.com/bhowmikshuvo/" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="inkedin.com/in/shuvo-bhowmik-03447b299/" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+        <a href="https://www.instagram.com/prdazk__" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/laduni-prada-ab198b3a9/" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
                 </div>
             </div>
 
             <div class="col-lg-2 col-6 footer-links">
-                <h4>Useful Links</h4>
+                <h4>Tautan</h4>
                 <ul>
-                    <li><a href="#hero">Home</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#technology">Technology</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#hero">Beranda</a></li>
+                    <li><a href="#experience">Pengalaman</a></li>
+                    <li><a href="#technology">Teknologi</a></li>
+                    <li><a href="#portfolio">Portofolio</a></li>
                     <li><a href="#faq">FAQ</a></li>
                    
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#contact">Kontak</a></li>
                 </ul>
             </div>
 
             <div class="col-lg-2 col-6 footer-links">
-                <h4>Our Services</h4>
+                <h4>Layanan Kami</h4>
                 <ul>
-                    <li><a href="#">Web Design</a></li>
-                    <li><a href="#">Web Development</a></li>
-                    <li><a href="#">Rest Api Development</a></li>
-                    <li><a href="#">App Development</a></li>
+                    <li><a href="#">Desain Web</a></li>
+                    <li><a href="#">Pengembangan Web</a></li>
+                    <li><a href="#">Pengembangan Rest Api</a></li>
+                    <li><a href="#">Pengembangan Aplikasi</a></li>
                     
                 </ul>
             </div>
 
             <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
-                <h4>Contact Us</h4>
+                <h4>Kontak</h4>
                 <p>
-                    Luxmibazar - Sutrapur - Dhaka - Bangladesh
-                    <strong>Phone:</strong> +88 01751720590<br>
-                    <strong>Email:</strong> shuvobhowmik_cse11uits@yahoo.com<br>
+                    Caruban, Madiun Jawa-Timur
+                    <strong>Telepon:</strong>085704420231<br>
+                    <strong>Email:</strong>laduniprada4@gmail.com<br>
                 </p>
 
             </div>
@@ -54,7 +54,7 @@
 
     <div class="container mt-4">
         <div class="copyright">
-            &copy; Copyright <strong><span>shuvobhowmik.xyz</span></strong>. All Rights Reserved
+            &copy; Hak Cipta <strong><span>Prdazk</span></strong>. Seluruh Hak Dilindungi
         </div>
         <div class="credits">
             <!-- All the links in the footer should remain intact. -->

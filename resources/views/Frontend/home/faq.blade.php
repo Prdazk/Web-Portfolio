@@ -6,10 +6,10 @@
 
         <div class="col-lg-4">
           <div class="content px-xl-5">
-            <h3>Frequently Asked <strong>Questions</strong></h3>
+            <h3>punya <strong>Pertanyaan</strong>?</h3>
             <p>
-              "Explore answers to common questions about software development. From methodologies and collaboration to code quality and innovation, 
-              discover how software developers contribute to company goals and drive success."
+              Temukan jawaban seputar dunia pengembangan perangkat lunak. Mulai dari metodologi kerja, kolaborasi tim, hingga kualitas kode dan inovasi, 
+              pelajari bagaimana developer berperan mewujudkan tujuan perusahaan dan mendorong kesuksesan.
             </p>
           </div>
         </div>

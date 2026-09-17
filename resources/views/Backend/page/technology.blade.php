@@ -7,20 +7,20 @@
     <div class="page-content">
         <!--breadcrumb-->
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-            <div class="breadcrumb-title pe-3">All Technology</div>
+            <div class="breadcrumb-title pe-3">Semua Teknologi</div>
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">All Technology</li>
+                        <li class="breadcrumb-item active" aria-current="page">Semua Teknologi</li>
                     </ol>
                 </nav>
             </div>
             <div class="ms-auto">
                 <div class="btn-group">
                     <a href="/add/banner" class="btn btn-primary" data-bs-toggle="modal"
-                        data-bs-target="#exampleVerticallycenteredModal">Add Technology</a>
+                        data-bs-target="#exampleVerticallycenteredModal">Tambah Teknologi</a>
                 </div>
 
                 <!-- Modal -->
@@ -28,9 +28,9 @@
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title">Insert Data</h5>
+                                <h5 class="modal-title">Masukkan Data</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
+                                    aria-label="Tutup"></button>
                             </div>
 
                             <div class="modal-body">
@@ -39,30 +39,30 @@
                                     {{ @csrf_field() }}
 
                                     <div class="col-12">
-                                        <label for="title" class="form-label">Name</label>
+                                        <label for="title" class="form-label">Nama</label>
                                         <input type="text" class="form-control" name="name" id="title"
-                                            placeholder="Title">
+                                            placeholder="Judul">
                                     </div>
                                     <br>
 
                                     <div class="col-12">
-                                        <label for="icon" class="form-label">Svg Icon</label>
+                                        <label for="icon" class="form-label">Ikon Svg</label>
                                         <input type="text" class="form-control" name="icon" id="icon"
-                                            placeholder="Svg Icon">
+                                            placeholder="Ikon Svg">
                                     </div>
                                     <br>
 
 
                                     
 
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-primary">Kirim</button>
 
                                 </form>
 
                             </div>
 
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
 
                             </div>
                         </div>
@@ -81,10 +81,10 @@
                     <table id="example" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Sl</th>
-                                <th>Technology </th>
+                                <th>No</th>
+                                <th>Teknologi </th>
                                 <th>Avatar</th>
-                                <th>Action</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -140,9 +140,9 @@
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title">Update Data</h5>
+                                                <h5 class="modal-title">Perbarui Data</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
+                                                    aria-label="Tutup"></button>
                                             </div>
 
                                             <div class="modal-body">
@@ -154,7 +154,7 @@
                                                     <input type="hidden" name="id" value="{{$item->id}}" />
 
                                                     <div class="col-12">
-                                                        <label for="technology" class="form-label">Technology</label>
+                                                        <label for="technology" class="form-label">Teknologi</label>
                                                         <input type="text" class="form-control"
                                                             name="name" value="{{$item->name}}" id="technology"
                                                             >
@@ -163,7 +163,7 @@
 
 
                                                     <div class="col-12">
-                                                        <label for="icon" class="form-label">Svg Icon</label>
+                                                        <label for="icon" class="form-label">Ikon Svg</label>
                                                         <input type="text" class="form-control"
                                                             name="icon" value="{{$item->icon}}" id="icon"
                                                             >
@@ -177,7 +177,7 @@
                                                     
 
                                                     <button type="submit"
-                                                        class="btn btn-primary">Submit</button>
+                                                        class="btn btn-primary">Kirim</button>
 
                                                 </form>
 
@@ -185,7 +185,7 @@
 
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Close</button>
+                                                    data-bs-dismiss="modal">Tutup</button>
 
                                             </div>
                                         </div>
@@ -212,7 +212,7 @@
     // Reset input file
     $('input[type="file"][name="avatar"]').val('');
     
-    // Image preview
+    // Pratinjau gambar
     $('input[type="file"][name="avatar"]').on('change', function(){
     
         var img_path = $(this)[0].value;
@@ -231,7 +231,7 @@
                 img_holder.show();
                 reader.readAsDataURL($(this)[0].files[0]);
             } else {
-                $(img_holder).html('This browser does not support FileReader');
+                $(img_holder).html('Browser ini tidak mendukung FileReader');
             }
         } else {
             $(img_holder).empty();
@@ -245,8 +245,8 @@
         e.preventDefault();
         var id = $(this).data('id');
         swal({
-            title: "Are you sure?",
-            text: "Once deleted, you will not be able to recover this item!",
+            title: "Apakah Anda yakin?",
+            text: "Setelah dihapus, Anda tidak akan bisa memulihkan item ini!",
             icon: "warning",
             buttons: true,
             dangerMode: true,
@@ -254,37 +254,27 @@
         .then((willDelete) => {
             if (willDelete) {
                 $.ajax({
-                    url: '/admin/delete-technology/' + id, // Update the URL to match your route
+                    url: '/admin/delete-technology/' + id, // Sesuaikan URL dengan route Anda
                     type: 'DELETE',
                     data: {
                         "_token": "{{ csrf_token() }}"
                     },
                     success: function(response) {
-                        swal("Poof! Your item has been deleted!", {
+                        swal("Berhasil! Item Anda telah dihapus!", {
                             icon: "success",
                         });
-                        // Update the table after successful deletion
+                        // Perbarui tabel setelah berhasil menghapus
                         window.location.reload();
                     },
                     error: function(xhr) {
-                        swal("Oops!", "Something went wrong!", "error");
+                        swal("Ups!", "Terjadi kesalahan!", "error");
                     }
                 });
             } else {
-                swal("Your item is safe!");
+                swal("Item Anda aman!");
             }
         });
     });
 </script>
 
-    
-
-    
-
-    
-
 @endsection
-
-
-
-

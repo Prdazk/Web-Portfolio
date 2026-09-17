@@ -3,8 +3,8 @@
     <div class="container" data-aos="zoom-out">
 
         <div class="section-header">
-                <h2>Fluent Technology</h2>
-                <p>Dedicated to delivering exceptional user experiences and ensuring accessibility across various platforms.</p>
+                <h2>Technology</h2>
+                <p>Membuat pengalaman digital yang nyaman dan mudah digunakan di berbagai platform.</p>
             </div>
 
         <div class="clients-slider swiper">

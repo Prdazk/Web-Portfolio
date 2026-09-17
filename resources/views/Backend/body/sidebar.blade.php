@@ -23,7 +23,7 @@
             <a href="/admin/hero">
                 <div class="parent-icon"><i class='bx bx-note'></i>
                 </div>
-                <div class="menu-title">Hero Section</div>
+                <div class="menu-title">Bagian utama</div>
             </a>
            
         </li>
@@ -32,7 +32,7 @@
             <a href="/admin/icon-box">
                 <div class="parent-icon"><i class="bx bx-happy"></i>
                 </div>
-                <div class="menu-title">Icon Box</div>
+                <div class="menu-title">Kotak Icon</div>
             </a>
            
         </li>
@@ -41,7 +41,7 @@
             <a href="/admin/work-experience">
                 <div class="parent-icon"><i class="bx bx-list-check"></i>
                 </div>
-                <div class="menu-title">Work Experience</div>
+                <div class="menu-title">Pengalaman Kerja</div>
             </a>
            
         </li>
@@ -50,7 +50,7 @@
             <a href="/admin/technology">
                 <div class="parent-icon"><i class="bx bx-history"></i>
                 </div>
-                <div class="menu-title">Technology</div>
+                <div class="menu-title">Teknologi</div>
             </a>
            
         </li>
@@ -59,7 +59,7 @@
             <a href="/admin/faq">
                 <div class="parent-icon"><i class="bx bx-export"></i>
                 </div>
-                <div class="menu-title">FAQ</div>
+                <div class="menu-title">Pertanyaan Umum</div>
             </a>
            
         </li>  
@@ -69,7 +69,7 @@
             <a href="/admin/stack">
                 <div class="parent-icon"><i class="bx bx-notification"></i>
                 </div>
-                <div class="menu-title">STACK</div>
+                <div class="menu-title">Portfolio</div>
             </a>
            
         </li>
@@ -78,7 +78,7 @@
             <a href="/admin/product">
                 <div class="parent-icon"><i class="bx bx-dollar"></i>
                 </div>
-                <div class="menu-title">Product</div>
+                <div class="menu-title">Produk</div>
             </a>
            
         </li>
@@ -87,7 +87,7 @@
             <a href="/admin/product/gallery">
                 <div class="parent-icon"><i class="bx bx-cloud-upload"></i>
                 </div>
-                <div class="menu-title">Gallery</div>
+                <div class="menu-title">Galeri</div>
             </a>
            
         </li>
@@ -96,7 +96,7 @@
             <a href="/admin/contact">
                 <div class="parent-icon"><i class="bx bx-phone-call"></i>
                 </div>
-                <div class="menu-title">Contact</div>
+                <div class="menu-title">Kontak</div>
             </a>
            
         </li>

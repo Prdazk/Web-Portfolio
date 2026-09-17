@@ -81,8 +81,8 @@
                         <div class="dropdown-menu dropdown-menu-end">
                             <a href="javascript:;">
                                 <div class="msg-header">
-                                    <p class="msg-header-title">Notifications</p>
-                                    <p class="msg-header-badge">8 New</p>
+                                    <p class="msg-header-title">Notifikasi</p>
+                                    <p class="msg-header-badge">8 Baru</p>
                                 </div>
                             </a>
                             <div class="header-notifications-list">
@@ -93,9 +93,9 @@
                                                 alt="user avatar">
                                         </div>
                                         <div class="flex-grow-1">
-                                            <h6 class="msg-name">Daisy Anderson<span class="msg-time float-end">5 sec
-                                                    ago</span></h6>
-                                            <p class="msg-info">The standard chunk of lorem</p>
+                                            <h6 class="msg-name">Daisy Anderson<span class="msg-time float-end">5 detik yang
+                                                    lalu</span></h6>
+                                            <p class="msg-info">Contoh teks notifikasi</p>
                                         </div>
                                     </div>
                                 </a>
@@ -104,7 +104,7 @@
                             </div>
                             <a href="javascript:;">
                                 <div class="text-center msg-footer">
-                                    <button class="btn btn-primary w-100">View All Notifications</button>
+                                    <button class="btn btn-primary w-100">Lihat Semua Notifikasi</button>
                                 </div>
                             </a>
                         </div>
@@ -136,7 +136,7 @@
                                             </div>
                                         </div>
                                         <div class="flex-grow-1">
-                                            <h6 class="cart-product-title mb-0">Men White T-Shirt</h6>
+                                            <h6 class="cart-product-title mb-0">Kaos Putih Pria</h6>
                                             <p class="cart-product-price mb-0">1 X $29.00</p>
                                         </div>
                                         <div class="">
@@ -162,24 +162,24 @@
                     <img src="{{asset('Backend/assets/images/avatars/avatar-2.png')}}" class="user-img" alt="user avatar">
                     <div class="user-info">
                         <p class="user-name mb-0">Pauline Seitz</p>
-                        <p class="designattion mb-0">Web Designer</p>
+                        <p class="designattion mb-0">Desainer Web</p>
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
                     <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
-                                class="bx bx-user fs-5"></i><span>Profile</span></a>
+                                class="bx bx-user fs-5"></i><span>Profil</span></a>
                     </li>
                     <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
-                                class="bx bx-cog fs-5"></i><span>Settings</span></a>
+                                class="bx bx-cog fs-5"></i><span>Pengaturan</span></a>
                     </li>
                     <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
                                 class="bx bx-home-circle fs-5"></i><span>Dashboard</span></a>
                     </li>
                     <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
-                                class="bx bx-dollar-circle fs-5"></i><span>Earnings</span></a>
+                                class="bx bx-dollar-circle fs-5"></i><span>Penghasilan</span></a>
                     </li>
                     <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
-                                class="bx bx-download fs-5"></i><span>Downloads</span></a>
+                                class="bx bx-download fs-5"></i><span>Unduhan</span></a>
                     </li>
                     <li>
                         <div class="dropdown-divider mb-0"></div>

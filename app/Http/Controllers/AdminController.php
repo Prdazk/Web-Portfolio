@@ -155,7 +155,14 @@ class AdminController extends Controller
         return view('Backend.page.work_experience', compact('data'));
     }
 
-    public function AddExperience(Request $request){
+        public function AddExperience(Request $request){
+
+        $request->validate([
+            'company_name'  => 'required|string',
+            'designation'   => 'required|string',
+            'date'          => 'required|string',
+            'responsiblity' => 'required|string',
+        ]);
 
         Experience::create([
             'company_name' => $request->company_name,
@@ -175,6 +182,13 @@ class AdminController extends Controller
     {
 
         $id = $request->input('id');
+
+        $request->validate([
+            'company_name'  => 'required|string',
+            'designation'   => 'required|string',
+            'date'          => 'required|string',
+            'responsiblity' => 'required|string',
+        ]);
 
         Experience::findOrFail($id)->update([
             'company_name' => $request->company_name,
