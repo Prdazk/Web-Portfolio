@@ -5,32 +5,35 @@
 
 
     <div class="page-content">
-        <!--breadcrumb-->
+        <!-- breadcrumb -->
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-            <div class="breadcrumb-title pe-3">All FAQ</div>
+            <div class="breadcrumb-title pe-3">Semua FAQ</div>
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
-                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+                        <li class="breadcrumb-item">
+                            <a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">All FAQ</li>
+                        <li class="breadcrumb-item active" aria-current="page">Semua FAQ</li>
                     </ol>
                 </nav>
             </div>
             <div class="ms-auto">
                 <div class="btn-group">
                     <a href="/add/banner" class="btn btn-primary" data-bs-toggle="modal"
-                        data-bs-target="#exampleVerticallycenteredModal">Add FAQ</a>
+                        data-bs-target="#modalTambahFaq">
+                        <i class="bx bx-plus"></i> Tambah FAQ
+                    </a>
                 </div>
 
-                <!-- Modal -->
-                <div class="modal fade" id="exampleVerticallycenteredModal" tabindex="-1" aria-hidden="true">
+                <!-- Modal Tambah -->
+                <div class="modal fade" id="modalTambahFaq" tabindex="-1" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title">Insert Data</h5>
+                                <h5 class="modal-title">Tambah Data FAQ</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
+                                    aria-label="Tutup"></button>
                             </div>
 
                             <div class="modal-body">
@@ -39,39 +42,37 @@
                                     {{ @csrf_field() }}
 
                                     <div class="col-12">
-                                        <label for="title" class="form-label">Question</label>
+                                        <label for="title" class="form-label">Pertanyaan</label>
                                         <input type="text" class="form-control" name="question" id="title"
-                                            placeholder="Title">
+                                            placeholder="Tuliskan pertanyaan" required>
                                     </div>
                                     <br>
 
                                     <div class="col-md-12">
-                                        <label for="description" class="form-label">Answer</label>
-                                        <textarea class="form-control" name="answer" id="description" placeholder="Answer ..." rows="3"></textarea>
+                                        <label for="description" class="form-label">Jawaban</label>
+                                        <textarea class="form-control" name="answer" id="description"
+                                            placeholder="Tuliskan jawaban..." rows="3" required></textarea>
                                     </div>
                                     <br>
 
-
-                                    
-
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="bx bx-save"></i> Simpan
+                                    </button>
 
                                 </form>
 
                             </div>
 
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-
             </div>
         </div>
-        <!--end breadcrumb-->
+        <!-- akhir breadcrumb -->
 
         <hr />
         <div class="card">
@@ -80,38 +81,36 @@
                     <table id="example" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Sl</th>
-                                <th>Question </th>
-                                <th>Answer</th>
-                                <th>Action</th>
+                                <th>No</th>
+                                <th>Pertanyaan</th>
+                                <th>Jawaban</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
 
-                            @foreach ($data as $index => $item)
+                            @forelse ($data as $index => $item)
                                 <tr>
-                                    <td>{{$index+1}}</td>
+                                    <td>{{ $index + 1 }}</td>
                                     <td>{{ $item->question }}</td>
-                                    <td>{{ \Illuminate\Support\Str::limit($item->answer, 50) }} </td>
-                                    
-                                    
-                                    <td>
-                                        <a href="/edit/hero/{{ $item->id }}" class="btn btn-info" data-bs-toggle="modal"
-                                            data-bs-target="#editModal{{ $item->id }}">
+                                    <td>{{ \Illuminate\Support\Str::limit($item->answer, 50) }}</td>
 
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    <td>
+                                        <a href="/edit/hero/{{ $item->id }}" class="btn btn-info" title="Ubah Data"
+                                            data-bs-toggle="modal" data-bs-target="#modalUbah{{ $item->id }}">
+
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                                 stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit">
                                                 <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
                                                 <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
                                             </svg>
 
-
                                         </a>
-                                        <a href="#" class="btn btn-danger delete-item" data-id="{{ $item->id }}"
-                                            style="margin-left: 15px">
+                                        <a href="#" class="btn btn-danger delete-item" title="Hapus Data"
+                                            data-id="{{ $item->id }}" style="margin-left: 15px">
 
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                                 class="feather feather-trash-2">
@@ -119,10 +118,8 @@
                                                 <path
                                                     d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
                                                 </path>
-                                                <line x1="10" y1="11" x2="10" y2="17">
-                                                </line>
-                                                <line x1="14" y1="11" x2="14" y2="17">
-                                                </line>
+                                                <line x1="10" y1="11" x2="10" y2="17"></line>
+                                                <line x1="14" y1="11" x2="14" y2="17"></line>
                                             </svg>
 
                                         </a>
@@ -131,50 +128,42 @@
 
                                 </tr>
 
-                                <!-- Modal -->
-                                <div class="modal fade" id="editModal{{ $item->id }}" tabindex="-1"
+                                <!-- Modal Ubah -->
+                                <div class="modal fade" id="modalUbah{{ $item->id }}" tabindex="-1"
                                     aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered modal-lg">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title">Update FAQ</h5>
+                                                <h5 class="modal-title">Ubah Data FAQ</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
+                                                    aria-label="Tutup"></button>
                                             </div>
 
                                             <div class="modal-body">
 
-                                                <form method="POST" action="/admin/update-faq"
-                                                    >
+                                                <form method="POST" action="/admin/update-faq">
                                                     {{ @csrf_field() }}
 
-                                                    <input type="hidden" name="id" value="{{$item->id}}" />
+                                                    <input type="hidden" name="id" value="{{ $item->id }}" />
 
                                                     <div class="col-12">
-                                                        <label for="technology" class="form-label">Question</label>
+                                                        <label for="question{{ $item->id }}" class="form-label">Pertanyaan</label>
                                                         <input type="text" class="form-control"
-                                                            name="question" value="{{$item->question}}" id="technology"
-                                                            >
+                                                            name="question" value="{{ $item->question }}"
+                                                            id="question{{ $item->id }}" required>
                                                     </div>
                                                     <br>
 
                                                     <div class="col-md-12">
-                                                        <label for="answer"
-                                                            class="form-label">Answer</label>
-                                                            <textarea class="form-control" name="answer" id="answer" rows="3">
-                                                                {{$item->answer}}
-                                                            </textarea>
-                                                        
+                                                        <label for="answer{{ $item->id }}" class="form-label">Jawaban</label>
+                                                        <textarea class="form-control" name="answer"
+                                                            id="answer{{ $item->id }}" rows="3" required>{{ $item->answer }}</textarea>
                                                     </div>
-
-                                                   
-
                                                     <br>
 
-                                                   
-
-                                                    <button type="submit"
-                                                        class="btn btn-primary">Submit</button>
+                                                    <button type="submit" class="btn btn-primary">
+                                                        <i class="bx bx-save"></i> Simpan Perubahan
+                                                    </button>
 
                                                 </form>
 
@@ -182,15 +171,17 @@
 
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Close</button>
-
+                                                    data-bs-dismiss="modal">Batal</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-
-                            @endforeach
+                            @empty
+                                <tr>
+                                    <td colspan="4" class="text-center">Belum ada data FAQ.</td>
+                                </tr>
+                            @endforelse
 
                         </tbody>
 
@@ -199,89 +190,40 @@
             </div>
         </div>
 
-
-
     </div>
 
+    <script>
+        $(document).on('click', '.delete-item', function (e) {
+            e.preventDefault();
+            var id = $(this).data('id');
 
-    
-        <script>
-    // Reset input file
-    $('input[type="file"][name="avatar"]').val('');
-    
-    // Image preview
-    $('input[type="file"][name="avatar"]').on('change', function(){
-    
-        var img_path = $(this)[0].value;
-        var img_holder = $('.img-holder');
-        var extension = img_path.substring(img_path.lastIndexOf('.') + 1).toLowerCase();
-
-        $('.avatarPreview').hide();
-
-        if (extension == 'jpeg' || extension == 'jpg' || extension == 'png') {
-            if (typeof(FileReader) != 'undefined') {
-                img_holder.empty();
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $('<img/>', {'src': e.target.result, 'class': 'img-fluid', 'style': 'max-width:100px;margin-bottom:10px;'}).appendTo(img_holder);
+            swal({
+                title: "Apakah Anda yakin?",
+                text: "Data yang sudah dihapus tidak dapat dikembalikan lagi!",
+                icon: "warning",
+                buttons: ["Batal", "Ya, Hapus!"],
+                dangerMode: true,
+            }).then((yakinHapus) => {
+                if (yakinHapus) {
+                    $.ajax({
+                        url: '/admin/delete-faq/' + id,
+                        type: 'DELETE',
+                        data: {
+                            "_token": "{{ csrf_token() }}"
+                        },
+                        success: function (response) {
+                            swal("Berhasil!", "Data FAQ telah dihapus.", "success");
+                            window.location.reload();
+                        },
+                        error: function (xhr) {
+                            swal("Gagal!", "Terjadi kesalahan saat menghapus data.", "error");
+                        }
+                    });
+                } else {
+                    swal("Aman!", "Data Anda tidak jadi dihapus.", "info");
                 }
-                img_holder.show();
-                reader.readAsDataURL($(this)[0].files[0]);
-            } else {
-                $(img_holder).html('This browser does not support FileReader');
-            }
-        } else {
-            $(img_holder).empty();
-        }
-    });
-</script>
-
-
-<script>
-    $(document).on('click', '.delete-item', function (e) {
-        e.preventDefault();
-        var id = $(this).data('id');
-        swal({
-            title: "Are you sure?",
-            text: "Once deleted, you will not be able to recover this item!",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        })
-        .then((willDelete) => {
-            if (willDelete) {
-                $.ajax({
-                    url: '/admin/delete-faq/' + id, // Update the URL to match your route
-                    type: 'DELETE',
-                    data: {
-                        "_token": "{{ csrf_token() }}"
-                    },
-                    success: function(response) {
-                        swal("Poof! Your item has been deleted!", {
-                            icon: "success",
-                        });
-                        // Update the table after successful deletion
-                        window.location.reload();
-                    },
-                    error: function(xhr) {
-                        swal("Oops!", "Something went wrong!", "error");
-                    }
-                });
-            } else {
-                swal("Your item is safe!");
-            }
+            });
         });
-    });
-</script>
-
-    
-
-    
-
-    
+    </script>
 
 @endsection
-
-
-
-

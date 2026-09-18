@@ -224,47 +224,80 @@ class AdminController extends Controller
     public function Technology()
     {
         $data = Technology::all();
-        return view('Backend.page.technology', compact('data'));
-    }  
+        $stack = Stack::all();
+        return view('Backend.page.technology', compact('data', 'stack'));
+    } 
 
-    public function AddTechnology(Request $request)
+        public function AddTechnology(Request $request)
     {
-        
+        $request->validate([
+            'name'        => 'required|string|max:255',
+            'stack_id'    => 'required|exists:stacks,id',
+            'description' => 'required|string',
+            'github_link' => 'nullable|url',
+            'demo_link'   => 'nullable|url',
+            'screenshot'  => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+        ]);
+
+        $screenshot = null;
+
+        if ($request->hasFile('screenshot') && $request->file('screenshot')->isValid()) {
+            $screenshot = $request->file('screenshot')->getClientOriginalName();
+            $request->file('screenshot')->move(public_path('upload'), $screenshot);
+        }
 
         Technology::create([
-            'name' => $request->name,
-            'icon' => $request->icon,
+            'name'        => $request->name,
+            'stack_id'    => $request->stack_id,
+            'description' => $request->description,
+            'github_link' => $request->github_link,
+            'demo_link'   => $request->demo_link,
+            'screenshot'  => $screenshot,
         ]);
 
         return redirect()->back()->with('message', [
             'type' => 'success',
             'text' => "Data Inserted Successfully"
         ]);
-    }  
+    }
 
 
     public function UpdateTechnology(Request $request)
     {
-
         $id = $request->input('id');
 
-    
-            Technology::findOrFail($id)->update([
-                'name' => $request->name,
-                'icon' => $request->icon
-                
-            ]);
+        $request->validate([
+            'name'        => 'required|string|max:255',
+            'stack_id'    => 'required|exists:stacks,id',
+            'description' => 'required|string',
+            'github_link' => 'nullable|url',
+            'demo_link'   => 'nullable|url',
+            'screenshot'  => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+        ]);
 
+        $item = Technology::findOrFail($id);
 
+        $data = [
+            'name'        => $request->name,
+            'stack_id'    => $request->stack_id,
+            'description' => $request->description,
+            'github_link' => $request->github_link,
+            'demo_link'   => $request->demo_link,
+        ];
+
+        if ($request->hasFile('screenshot') && $request->file('screenshot')->isValid()) {
+            $screenshot = $request->file('screenshot')->getClientOriginalName();
+            $request->file('screenshot')->move(public_path('upload'), $screenshot);
+            $data['screenshot'] = $screenshot;
+        }
+
+        $item->update($data);
 
         return redirect()->back()->with('message', [
             'type' => 'success',
             'text' => "Data Updated Successfully"
         ]);
-
-
-
-    }  
+    }
 
 
     public function DeleteTechnology($id)
@@ -332,39 +365,64 @@ class AdminController extends Controller
     }  
 
 
-    public function AddStack(Request $request){
+        public function AddStack(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $logo = null;
+
+        if ($request->hasFile('logo')) {
+            if ($request->file('logo')->isValid()) {
+                $logo = $request->file('logo')->getClientOriginalName();
+                $request->file('logo')->move(public_path('upload'), $logo);
+            }
+        }
 
         Stack::create([
             'name' => $request->name,
+            'logo' => $logo,
         ]);
 
         return redirect()->back()->with('message', [
             'type' => 'success',
             'text' => "Data Inserted Successfully"
         ]);
-
-    }  
+    }
 
 
     public function UpdateStack(Request $request)
     {
-
         $id = $request->input('id');
 
-        Stack::findOrFail($id)->update([
-            'name' => $request->name,
-        ]);
+        if ($request->hasFile('logo')) {
+            $request->validate([
+                'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
 
+            if ($request->file('logo')->isValid()) {
+                $logo = $request->file('logo')->getClientOriginalName();
+                $request->file('logo')->move(public_path('upload'), $logo);
+            }
 
+            Stack::findOrFail($id)->update([
+                'name' => $request->name,
+                'logo' => $logo,
+            ]);
+
+        } else {
+            Stack::findOrFail($id)->update([
+                'name' => $request->name,
+            ]);
+        }
 
         return redirect()->back()->with('message', [
             'type' => 'success',
             'text' => "Data Updated Successfully"
         ]);
-
-
-
-    } 
+    }
 
 
     public function DeleteStack($id)

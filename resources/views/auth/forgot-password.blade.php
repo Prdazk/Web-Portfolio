@@ -1,14 +1,14 @@
 <!doctype html>
-<html lang="en" class="semi-dark">
+<html lang="id" class="semi-dark">
 
 
 <head>
-    <!-- Required meta tags -->
+    <!-- Meta tag wajib -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--favicon-->
-    <link rel="icon" href="{{ asset('Backend/assets/images/favicon-32x32.png') }}" type="image/png" />
-    <!--plugins-->
+    <link rel="icon" href="{{ asset('Backend/assets/images/Login.png') }}" type="image/png" />
+    <!--plugin-->
     <link href="{{ asset('Backend/assets/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />
     <link href="{{ asset('Backend/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet" />
     <link href="{{ asset('Backend/assets/plugins/metismenu/css/metisMenu.min.css') }}" rel="stylesheet" />
@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
         integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Forgot Password</title>
+    <title>Lupa Kata Sandi</title>
 </head>
 
 <body class="">
@@ -50,21 +50,21 @@
                                         <img src="{{ asset('Backend/assets/images/icons/forgot-2.png') }}"
                                             width="100" alt="" />
                                     </div>
-                                    <h4 class="mt-5 font-weight-bold">Forgot Password?</h4>
-                                    <p class="text-muted">Enter your registered email ID to reset the password</p>
+                                    <h4 class="mt-5 font-weight-bold">Lupa Kata Sandi?</h4>
+                                    <p class="text-muted">Masukkan email terdaftar Anda untuk mengatur ulang kata sandi</p>
 
                                     <form method="POST" action="/forgot-password">
                                         {{ @csrf_field() }}
                                         <div class="my-4">
-                                            <label class="form-label">Email id</label>
+                                            <label class="form-label">Email</label>
                                             <input type="text" class="form-control" placeholder="example@user.com"
                                                 type="email" name="email" :value="old('email')" required />
                                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
                                         </div>
                                         <div class="d-grid gap-2">
-                                            <button type="submit" class="btn btn-primary">Send</button>
+                                            <button type="submit" class="btn btn-primary">Kirim</button>
                                             <a href="/login" class="btn btn-light"><i
-                                                    class='bx bx-arrow-back me-1'></i>Back to
+                                                    class='bx bx-arrow-back me-1'></i>Kembali ke
                                                 Login</a>
                                         </div>
 
@@ -81,22 +81,22 @@
                     </div>
 
                 </div>
-                <!--end row-->
+                <!--akhir row-->
             </div>
         </div>
     </div>
-    <!--end wrapper-->
+    <!--akhir wrapper-->
 
 
 
     <!-- Bootstrap JS -->
     <script src="{{ asset('Backend/assets/js/bootstrap.bundle.min.js') }}"></script>
-    <!--plugins-->
+    <!--plugin-->
     <script src="{{ asset('Backend/assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('Backend/assets/plugins/simplebar/js/simplebar.min.js') }}"></script>
     <script src="{{ asset('Backend/assets/plugins/metismenu/js/metisMenu.min.js') }}"></script>
     <script src="{{ asset('Backend/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
-    <!--Password show & hide js -->
+    <!--Script tampilkan & sembunyikan kata sandi -->
     <script>
         $(document).ready(function() {
             $("#show_hide_password a").on('click', function(event) {

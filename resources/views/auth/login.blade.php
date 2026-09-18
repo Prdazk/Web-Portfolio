@@ -1,16 +1,15 @@
-
 <!doctype html>
-<html lang="en" class="semi-dark">
+<html lang="id" class="semi-dark">
 
 
 <!-- Mirrored from codervent.com/rukada/demo/vertical/ltr/auth-cover-signin.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 15 Apr 2024 02:10:30 GMT -->
 <head>
-	<!-- Required meta tags -->
+	<!-- Meta tag wajib -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--favicon-->
-	<link rel="icon" href="{{asset('Backend/assets/images/favicon-32x32.png')}}" type="image/png" />
-	<!--plugins-->
+	<link rel="icon" href="{{asset('Backend/assets/images/Login.png')}}" type="image/png" />
+	<!--plugin-->
 	<link href="{{asset('Backend/assets/plugins/simplebar/css/simplebar.css')}}" rel="stylesheet" />
 	<link href="{{asset('Backend/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css')}}" rel="stylesheet" />
 	<link href="{{asset('Backend/assets/plugins/metismenu/css/metisMenu.min.css')}}" rel="stylesheet" />
@@ -23,7 +22,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet">
 	<link href="{{asset('Backend/assets/css/app.css')}}" rel="stylesheet">
 	<link href="{{asset('Backend/assets/css/icons.css')}}" rel="stylesheet">
-	<title>Admin Credential</title>
+	<title>Kredensial Admin</title>
 </head>
 
 <body class="">
@@ -48,11 +47,11 @@
 							<div class="card-body p-sm-5">
 								<div class="">
 									<div class="mb-3 text-center">
-										<img src="{{asset('Backend/assets/images/logo-icon.png')}}" width="60" alt="">
+										<img src="{{asset('Backend/assets/images/login.png')}}" width="60" alt="">
 									</div>
 									<div class="text-center mb-4">
-										<h5 class="">Personal Portfolio</h5>
-										<p class="mb-0">Please log in to your account</p>
+										<h5 class="">Selamat Datang Prada😁</h5>
+										<p class="mb-0">Silakan masuk ke akun Anda</p>
 									</div>
 									<div class="form-body">
 										<form class="row g-3" method="POST"  action="/login">
@@ -64,25 +63,25 @@
                                                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
 											</div>
 											<div class="col-12">
-												<label for="inputChoosePassword" class="form-label">Password</label>
+												<label for="inputChoosePassword" class="form-label">Kata Sandi</label>
 												<div class="input-group" id="show_hide_password">
 													<input type="password" class="form-control border-end-0" type="password"
                                                     name="password"
-                                                    required autocomplete="current-password" placeholder="Enter Password"> <a href="javascript:;" class="input-group-text bg-transparent"><i class="bx bx-hide"></i></a>
+                                                    required autocomplete="current-password" placeholder="Masukkan Kata Sandi"> <a href="javascript:;" class="input-group-text bg-transparent"><i class="bx bx-hide"></i></a>
 												</div>
                                                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
 											</div>
 											<div class="col-md-6">
 												<div class="form-check form-switch">
 													<input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
-													<label class="form-check-label" for="flexSwitchCheckChecked">Remember Me</label>
+													<label class="form-check-label" for="flexSwitchCheckChecked">Ingat Saya</label>
 												</div>
 											</div>
-											<div class="col-md-6 text-end">	<a href="/forgot-password">Forgot Password ?</a>
+											<div class="col-md-6 text-end">	<a href="/forgot-password">Lupa Kata Sandi ?</a>
 											</div>
 											<div class="col-12">
 												<div class="d-grid">
-													<button type="submit" class="btn btn-primary">Sign in</button>
+													<button type="submit" class="btn btn-primary">Masuk</button>
 												</div>
 											</div>
 
@@ -100,19 +99,19 @@
 					</div>
 
 				</div>
-				<!--end row-->
+				<!--akhir row-->
 			</div>
 		</div>
 	</div>
-	<!--end wrapper-->
+	<!--akhir wrapper-->
 	<!-- Bootstrap JS -->
 	<script src="{{asset('Backend/assets/js/bootstrap.bundle.min.js')}}"></script>
-	<!--plugins-->
+	<!--plugin-->
 	<script src="{{asset('Backend/assets/js/jquery.min.js')}}"></script>
 	<script src="{{asset('Backend/assets/plugins/simplebar/js/simplebar.min.js')}}"></script>
 	<script src="{{asset('Backend/assets/plugins/metismenu/js/metisMenu.min.js')}}"></script>
 	<script src="{{asset('Backend/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js')}}"></script>
-	<!--Password show & hide js -->
+	<!--Script tampilkan & sembunyikan kata sandi -->
 	<script>
 		$(document).ready(function () {
 			$("#show_hide_password a").on('click', function (event) {

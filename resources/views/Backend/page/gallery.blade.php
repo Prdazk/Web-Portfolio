@@ -3,312 +3,260 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-
     <div class="page-content">
-        <!--breadcrumb-->
+        <!-- breadcrumb -->
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-            <div class="breadcrumb-title pe-3">Product Gallery</div>
+            <div class="breadcrumb-title pe-3">Galeri Produk</div>
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
-                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+                        <li class="breadcrumb-item">
+                            <a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">Product Gallery</li>
+                        <li class="breadcrumb-item active" aria-current="page">Galeri Produk</li>
                     </ol>
                 </nav>
             </div>
             <div class="ms-auto">
                 <div class="btn-group">
                     <a href="/add/banner" class="btn btn-primary" data-bs-toggle="modal"
-                        data-bs-target="#exampleVerticallycenteredModal">Add Product Gallery</a>
+                        data-bs-target="#modalTambahGaleri">
+                        <i class="bx bx-plus"></i> Tambah Galeri Produk
+                    </a>
                 </div>
 
-                <!-- Modal -->
-                <div class="modal fade" id="exampleVerticallycenteredModal" tabindex="-1" aria-hidden="true">
+                <!-- Modal Tambah -->
+                <div class="modal fade" id="modalTambahGaleri" tabindex="-1" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title">Insert Data</h5>
+                                <h5 class="modal-title">Tambah Data Galeri</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
+                                    aria-label="Tutup"></button>
                             </div>
 
                             <div class="modal-body">
-
                                 <form method="POST" action="/admin/add-product-gallery" enctype="multipart/form-data">
                                     {{ @csrf_field() }}
 
                                     <div class="col-md-12">
-										<label for="input7" class="form-label">Product</label>
-										<select id="input7" name="product_id" class="form-select">
-											<option selected disabled value="">Choose...</option>
+                                        <label for="input7" class="form-label">Pilih Produk</label>
+                                        <select id="input7" name="product_id" class="form-select" required>
+                                            <option selected disabled value="">-- Silakan pilih produk --</option>
                                             @foreach($product as $item)
-                                            <option value="{{$item->id}}">{{$item->name}}</option>
+                                                <option value="{{ $item->id }}">{{ $item->name }}</option>
                                             @endforeach
-											
-										</select>
-									</div>
+                                        </select>
+                                    </div>
 
                                     <br>
 
-
-                                    
-
-                                   
-
                                     <div class="col-12">
-                                        <label for="avatar"
-                                            class="form-label">Avatar</label>
-                                            <input type="file" class="form-control" id="avatar" name="avatar">
-                                            <br>
-
-                                            <div class="img-holder"></div>
+                                        <label for="avatar" class="form-label">Foto / Gambar Produk</label>
+                                        <input type="file" class="form-control" id="avatar" name="avatar" accept="image/*" required>
+                                        <small class="text-muted">Format yang didukung: JPG, JPEG, PNG</small>
+                                        <br><br>
+                                        <div class="img-holder"></div>
                                     </div>
                                     <br>
 
-
-                                    
-
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="bx bx-save"></i> Simpan
+                                    </button>
                                 </form>
-
                             </div>
 
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
-        <!--end breadcrumb-->
+        <!-- akhir breadcrumb -->
 
         <hr />
+
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
                     <table id="example" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Sl</th>
-                                <th>Avatar </th>
-                                <th>Product Name</th>
-                                
-                                <th>Action</th>
+                                <th>No</th>
+                                <th>Gambar</th>
+                                <th>Nama Produk</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-
-                            @foreach ($data as $index => $item)
+                            @forelse ($data as $index => $item)
                                 <tr>
-                                    <td>{{$index+1}}</td>
+                                    <td>{{ $index + 1 }}</td>
                                     <td>
-                                        <img class="avatarPreview" src="{{asset('upload/' .$item->avatar)}}"  width="80" height="80"/>
+                                        <img class="avatarPreview rounded"
+                                             src="{{ asset('upload/' . $item->avatar) }}"
+                                             alt="Gambar {{ $item->product->name ?? 'Produk' }}"
+                                             width="80" height="80">
                                     </td>
-                                    <td>{{$item->product->name}}</td>
-                                   
-                                    
-                                    
-                                    
+                                    <td>{{ $item->product->name ?? '-' }}</td>
                                     <td>
-                                        <a href="/edit/hero/{{ $item->id }}" class="btn btn-info" data-bs-toggle="modal"
-                                            data-bs-target="#editModal{{ $item->id }}">
-
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        <a href="/edit/hero/{{ $item->id }}" class="btn btn-info" title="Ubah Data"
+                                            data-bs-toggle="modal" data-bs-target="#modalUbah{{ $item->id }}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                                 stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit">
                                                 <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
                                                 <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
                                             </svg>
-
-
                                         </a>
-                                        <a href="#" class="btn btn-danger delete-item" data-id="{{ $item->id }}"
-                                            style="margin-left: 15px">
 
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        <a href="#" class="btn btn-danger delete-item" title="Hapus Data"
+                                            data-id="{{ $item->id }}" style="margin-left: 15px">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                                 class="feather feather-trash-2">
                                                 <polyline points="3 6 5 6 21 6"></polyline>
-                                                <path
-                                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
-                                                </path>
-                                                <line x1="10" y1="11" x2="10" y2="17">
-                                                </line>
-                                                <line x1="14" y1="11" x2="14" y2="17">
-                                                </line>
+                                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                                <line x1="10" y1="11" x2="10" y2="17"></line>
+                                                <line x1="14" y1="11" x2="14" y2="17"></line>
                                             </svg>
-
                                         </a>
-
                                     </td>
-
                                 </tr>
 
-                                <!-- Modal -->
-                                <div class="modal fade" id="editModal{{ $item->id }}" tabindex="-1"
-                                    aria-hidden="true">
+                                <!-- Modal Ubah -->
+                                <div class="modal fade" id="modalUbah{{ $item->id }}" tabindex="-1" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered modal-lg">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title">Update PRODUCT Gallery</h5>
+                                                <h5 class="modal-title">Ubah Data Galeri Produk</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
+                                                    aria-label="Tutup"></button>
                                             </div>
 
                                             <div class="modal-body">
-
                                                 <form method="POST" action="/admin/update-product-gallery" enctype="multipart/form-data">
                                                     {{ @csrf_field() }}
+                                                    <input type="hidden" name="id" value="{{ $item->id }}" />
 
-                                                    <input type="hidden" name="id" value="{{$item->id}}" />
-                
                                                     <div class="col-md-12">
-                                                        <label for="input7" class="form-label">Product</label>
-                                                        <select id="input7" name="product_id" class="form-select">
-                                                            <option selected disabled value="">Choose...</option>
-                                                            @foreach($product as $data)
-                                                            <option value="{{$data->id}}" @if($data->id == $item->product_id) selected   @endif >{{$data->name}}</option>
+                                                        <label for="input7" class="form-label">Pilih Produk</label>
+                                                        <select id="input7" name="product_id" class="form-select" required>
+                                                            <option selected disabled value="">-- Silakan pilih produk --</option>
+                                                            @foreach($product as $p)
+                                                                <option value="{{ $p->id }}" @if($p->id == $item->product_id) selected @endif>
+                                                                    {{ $p->name }}
+                                                                </option>
                                                             @endforeach
-                                                            
                                                         </select>
                                                     </div>
-                
-                                                    <br>
-                
-                
-                                                 
-            
-                
-                                                    <div class="col-12">
-                                                        <label for="avatar"
-                                                            class="form-label">Avatar</label>
-                                                            <input type="file" class="form-control" id="avatar" name="avatar">
-                                                            <br>
 
-                                                            <img class="avatarPreview" src="{{ asset('upload/' . $item->avatar) }}" alt="Preview" width="100" height="100">
-                
-                                                            <div class="img-holder"></div>
+                                                    <br>
+
+                                                    <div class="col-12">
+                                                        <label for="avatar" class="form-label">Foto / Gambar Produk</label>
+                                                        <input type="file" class="form-control" id="avatar" name="avatar" accept="image/*">
+                                                        <small class="text-muted">Kosongkan jika tidak ingin mengganti gambar</small>
+                                                        <br><br>
+                                                        <img class="avatarPreview rounded" src="{{ asset('upload/' . $item->avatar) }}"
+                                                             alt="Pratinjau" width="100" height="100">
+                                                        <div class="img-holder"></div>
                                                     </div>
                                                     <br>
-                
-                
-                                                    
-                
-                                                    <button type="submit" class="btn btn-primary">Submit</button>
-                
-                                                </form>
 
+                                                    <button type="submit" class="btn btn-primary">
+                                                        <i class="bx bx-save"></i> Simpan Perubahan
+                                                    </button>
+                                                </form>
                                             </div>
 
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Close</button>
-
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
-
-                            @endforeach
-
+                            @empty
+                                <tr>
+                                    <td colspan="4" class="text-center">Belum ada data galeri produk.</td>
+                                </tr>
+                            @endforelse
                         </tbody>
-
                     </table>
                 </div>
             </div>
         </div>
-
-
-
     </div>
 
+    <script>
+        // Reset input file saat halaman dimuat
+        $('input[type="file"][name="avatar"]').val('');
 
-    
-        <script>
-    // Reset input file
-    $('input[type="file"][name="avatar"]').val('');
-    
-    // Image preview
-    $('input[type="file"][name="avatar"]').on('change', function(){
-    
-        var img_path = $(this)[0].value;
-        var img_holder = $('.img-holder');
-        var extension = img_path.substring(img_path.lastIndexOf('.') + 1).toLowerCase();
+        // Pratinjau gambar sebelum diunggah
+        $('input[type="file"][name="avatar"]').on('change', function () {
+            var pathGambar = $(this)[0].value;
+            var wadahGambar = $(this).closest('.col-12').find('.img-holder');
+            var ekstensi = pathGambar.substring(pathGambar.lastIndexOf('.') + 1).toLowerCase();
 
-        $('.avatarPreview').hide();
+            $(this).closest('.modal-body').find('.avatarPreview').hide();
 
-        if (extension == 'jpeg' || extension == 'jpg' || extension == 'png') {
-            if (typeof(FileReader) != 'undefined') {
-                img_holder.empty();
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $('<img/>', {'src': e.target.result, 'class': 'img-fluid', 'style': 'max-width:100px;margin-bottom:10px;'}).appendTo(img_holder);
+            if (ekstensi === 'jpeg' || ekstensi === 'jpg' || ekstensi === 'png') {
+                if (typeof (FileReader) !== 'undefined') {
+                    wadahGambar.empty();
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('<img/>', {
+                            src: e.target.result,
+                            class: 'img-fluid rounded',
+                            style: 'max-width:100px;margin-bottom:10px;'
+                        }).appendTo(wadahGambar);
+                    };
+                    wadahGambar.show();
+                    reader.readAsDataURL($(this)[0].files[0]);
+                } else {
+                    wadahGambar.html('Peramban ini tidak mendukung pratinjau gambar (FileReader).');
                 }
-                img_holder.show();
-                reader.readAsDataURL($(this)[0].files[0]);
             } else {
-                $(img_holder).html('This browser does not support FileReader');
-            }
-        } else {
-            $(img_holder).empty();
-        }
-    });
-</script>
-
-
-<script>
-    $(document).on('click', '.delete-item', function (e) {
-        e.preventDefault();
-        var id = $(this).data('id');
-        swal({
-            title: "Are you sure?",
-            text: "Once deleted, you will not be able to recover this item!",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        })
-        .then((willDelete) => {
-            if (willDelete) {
-                $.ajax({
-                    url: '/admin/delete-product-gallery/' + id, // Update the URL to match your route
-                    type: 'DELETE',
-                    data: {
-                        "_token": "{{ csrf_token() }}"
-                    },
-                    success: function(response) {
-                        swal("Poof! Your item has been deleted!", {
-                            icon: "success",
-                        });
-                        // Update the table after successful deletion
-                        window.location.reload();
-                    },
-                    error: function(xhr) {
-                        swal("Oops!", "Something went wrong!", "error");
-                    }
-                });
-            } else {
-                swal("Your item is safe!");
+                wadahGambar.empty();
             }
         });
-    });
-</script>
+    </script>
 
-    
+    <script>
+        $(document).on('click', '.delete-item', function (e) {
+            e.preventDefault();
+            var id = $(this).data('id');
 
-    
-
-    
+            swal({
+                title: "Apakah Anda yakin?",
+                text: "Data yang sudah dihapus tidak dapat dikembalikan lagi!",
+                icon: "warning",
+                buttons: ["Batal", "Ya, Hapus!"],
+                dangerMode: true,
+            }).then((yakinHapus) => {
+                if (yakinHapus) {
+                    $.ajax({
+                        url: '/admin/delete-product-gallery/' + id,
+                        type: 'DELETE',
+                        data: {
+                            "_token": "{{ csrf_token() }}"
+                        },
+                        success: function (response) {
+                            swal("Berhasil!", "Data galeri produk telah dihapus.", "success");
+                            window.location.reload();
+                        },
+                        error: function (xhr) {
+                            swal("Gagal!", "Terjadi kesalahan saat menghapus data.", "error");
+                        }
+                    });
+                } else {
+                    swal("Aman!", "Data Anda tidak jadi dihapus.", "info");
+                }
+            });
+        });
+    </script>
 
 @endsection
-
-
-
-

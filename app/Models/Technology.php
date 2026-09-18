@@ -9,4 +9,9 @@ class Technology extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function stack()
+    {
+        return $this->belongsTo(Stack::class);
+    }
 }

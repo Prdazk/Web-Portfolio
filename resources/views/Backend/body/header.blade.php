@@ -1,11 +1,10 @@
 <header>
     <div class="topbar d-flex align-items-center">
         <nav class="navbar navbar-expand gap-3">
-           
 
             <div class="position-relative search-bar d-lg-block d-none" data-bs-toggle="modal"
                 data-bs-target="#SearchModal">
-                <input class="form-control px-5" type="search" placeholder="Search">
+                <input class="form-control px-5" type="search" placeholder="Cari...">
                 <span class="position-absolute top-50 search-show ms-3 translate-middle-y start-0 top-50 fs-5"><i
                         class='bx bx-search'></i></span>
             </div>
@@ -17,26 +16,26 @@
 
                     <li class="nav-item mobile-search-icon d-flex d-lg-none" data-bs-toggle="modal"
                         data-bs-target="#SearchModal">
-                        <a class="nav-link" href="avascript:;"><i class='bx bx-search'></i>
+                        <a class="nav-link" href="javascript:;"><i class='bx bx-search'></i>
                         </a>
                     </li>
 
                     <li class="nav-item dropdown dropdown-laungauge d-none d-sm-flex">
-                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="avascript:;"
-                            data-bs-toggle="dropdown"><img src="{{asset('Backend/assets/images/county/02.png')}}" width="22"
-                                alt="">
+                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;"
+                            data-bs-toggle="dropdown"><img src="{{ asset('Backend/assets/images/county/02.png') }}" width="22"
+                                alt="Bendera bahasa">
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;"><img
-                                        src="{{asset('Backend/assets/images/county/01.png')}}" width="20" alt=""><span
-                                        class="ms-2">English</span></a>
+                                        src="{{ asset('Backend/assets/images/county/01.png') }}" width="20" alt="Bendera Indonesia"><span
+                                        class="ms-2">Bahasa Indonesia</span></a>
                             </li>
-                           
+
                         </ul>
                     </li>
 
                     <li class="nav-item dark-mode d-none d-sm-flex" style="display: none">
-                        <a class="nav-link dark-mode-icon" href="javascript:;"><i class='bx bx-moon'></i>
+                        <a class="nav-link dark-mode-icon" href="javascript:;" title="Mode Gelap"><i class='bx bx-moon'></i>
                         </a>
                     </li>
 
@@ -51,8 +50,8 @@
                                         <a href="javascript:;">
                                             <div class="app-box text-center">
                                                 <div class="app-icon">
-                                                    <img src="{{asset('Backend/assets/images/app/slack.png')}}" width="30"
-                                                        alt="">
+                                                    <img src="{{ asset('Backend/assets/images/app/slack.png') }}" width="30"
+                                                        alt="Slack">
                                                 </div>
                                                 <div class="app-name">
                                                     <p class="mb-0 mt-1">Slack</p>
@@ -61,13 +60,7 @@
                                         </a>
                                     </div>
 
-                            
-                                   
-                                   
-                                
-                                   
-
-                                </div><!--end row-->
+                                </div><!--akhir row-->
 
                             </div>
                         </div>
@@ -89,8 +82,8 @@
                                 <a class="dropdown-item" href="javascript:;">
                                     <div class="d-flex align-items-center">
                                         <div class="user-online">
-                                            <img src="{{asset('Backend/assets/images/avatars/avatar-1.png')}}" class="msg-avatar"
-                                                alt="user avatar">
+                                            <img src="{{ asset('Backend/assets/images/avatars/avatar-1.png') }}" class="msg-avatar"
+                                                alt="Avatar pengguna">
                                         </div>
                                         <div class="flex-grow-1">
                                             <h6 class="msg-name">Daisy Anderson<span class="msg-time float-end">5 detik yang
@@ -100,7 +93,6 @@
                                     </div>
                                 </a>
 
-                            
                             </div>
                             <a href="javascript:;">
                                 <div class="text-center msg-footer">
@@ -131,16 +123,16 @@
                                     <div class="d-flex align-items-center gap-3">
                                         <div class="position-relative">
                                             <div class="cart-product rounded-circle bg-light">
-                                                <img src="{{asset('Backend/assets/images/products/02.png')}}" class=""
-                                                    alt="product image">
+                                                <img src="{{ asset('Backend/assets/images/products/02.png') }}" class=""
+                                                    alt="Gambar produk">
                                             </div>
                                         </div>
                                         <div class="flex-grow-1">
                                             <h6 class="cart-product-title mb-0">Kaos Putih Pria</h6>
-                                            <p class="cart-product-price mb-0">1 X $29.00</p>
+                                            <p class="cart-product-price mb-0">1 X Rp 29.000</p>
                                         </div>
                                         <div class="">
-                                            <p class="cart-price mb-0">$250</p>
+                                            <p class="cart-price mb-0">Rp 250.000</p>
                                         </div>
                                         <div class="cart-product-cancel"><i class="bx bx-x"></i>
                                         </div>
@@ -159,7 +151,7 @@
             <div class="user-box dropdown px-3">
                 <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret"
                     href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="{{asset('Backend/assets/images/avatars/avatar-2.png')}}" class="user-img" alt="user avatar">
+                    <img src="{{ asset('Backend/assets/images/avatars/avatar-2.png') }}" class="user-img" alt="Avatar pengguna">
                     <div class="user-info">
                         <p class="user-name mb-0">Pauline Seitz</p>
                         <p class="designattion mb-0">Desainer Web</p>
@@ -187,7 +179,7 @@
                     <li>
                         <a class="dropdown-item d-flex align-items-center" href="/admin/logout">
                             <i class="bx bx-log-out-circle"></i>
-                            <span>Logout</span>
+                            <span>Keluar</span>
                         </a>
                     </li>
                 </ul>
