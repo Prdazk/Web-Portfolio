@@ -2,16 +2,22 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Technology extends Model
 {
-    use HasFactory;
-    protected $guarded = [];
+    protected $fillable = [
+        'name',
+        'category',
+        'stack_id',
+        'description',
+        'github_link',
+        'demo_link',
+        'screenshot',
+    ];
 
-    public function stack()
+    public function images()
     {
-        return $this->belongsTo(Stack::class);
+        return $this->hasMany(TechnologyImage::class);
     }
 }

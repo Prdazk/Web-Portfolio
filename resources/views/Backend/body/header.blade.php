@@ -22,12 +22,12 @@
 
                     <li class="nav-item dropdown dropdown-laungauge d-none d-sm-flex">
                         <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;"
-                            data-bs-toggle="dropdown"><img src="{{ asset('Backend/assets/images/county/02.png') }}" width="22"
+                            data-bs-toggle="dropdown"><img src="{{ asset('Backend/assets/images/county/garuda.jpg') }}" width="22"
                                 alt="Bendera bahasa">
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;"><img
-                                        src="{{ asset('Backend/assets/images/county/01.png') }}" width="20" alt="Bendera Indonesia"><span
+                                        src="{{ asset('Backend/assets/images/county/garuda.jpg') }}" width="20" alt="Bendera Indonesia"><span
                                         class="ms-2">Bahasa Indonesia</span></a>
                             </li>
 
@@ -151,9 +151,9 @@
             <div class="user-box dropdown px-3">
                 <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret"
                     href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="{{ asset('Backend/assets/images/avatars/avatar-2.png') }}" class="user-img" alt="Avatar pengguna">
+                    <img src="{{ asset('Backend/assets/images/avatars/kerja.png') }}" class="user-img" alt="Avatar pengguna">
                     <div class="user-info">
-                        <p class="user-name mb-0">Pauline Seitz</p>
+                        <p class="user-name mb-0"> Prada</p>
                         <p class="designattion mb-0">Desainer Web</p>
                     </div>
                 </a>

@@ -37,6 +37,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet">
 
     <title>Portofolio Pribadi</title>
+
+    <style>
+    /* Posisi tombol pengaturan di kanan bawah */
+    .switcher-btn {
+        position: fixed !important;
+        right: 0 !important;
+        left: auto !important;
+        top: auto !important;
+        bottom: 70px !important;
+        z-index: 9999 !important;
+    }
+</style>
+
 </head>
 
 <body>
@@ -160,7 +173,8 @@
 
     <!-- switcher tema -->
     <div class="switcher-wrapper">
-        <div class="switcher-btn"> <i class='bx bx-cog bx-spin'></i>
+        <div class="switcher-btn">
+            <i class='bx bx-cog'></i>
         </div>
         <div class="switcher-body">
             <div class="d-flex align-items-center">

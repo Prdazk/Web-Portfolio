@@ -51,10 +51,9 @@ class HomeController extends Controller
 
     public function ProjectDetails(Request $request, $id){
 
-        $gallery = Gallery::where('product_id', $id)->get();
-        $product = Product::where('id', $id)->first();
+        $product = Technology::with('images')->findOrFail($id);
         
-        return view('Frontend.project_details', compact('gallery', 'product'));
+        return view('Frontend.project_details', compact('product'));
     }
 
 

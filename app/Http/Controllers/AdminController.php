@@ -223,16 +223,17 @@ class AdminController extends Controller
 
     public function Technology()
     {
-        $data = Technology::all();
+        $data = Technology::with('images')->get();
         $stack = Stack::all();
         return view('Backend.page.technology', compact('data', 'stack'));
-    } 
+    }
 
-        public function AddTechnology(Request $request)
+            public function AddTechnology(Request $request)
     {
         $request->validate([
             'name'        => 'required|string|max:255',
-            'stack_id'    => 'required|exists:stacks,id',
+            'category'    => 'required|string|max:255',
+            'stack_id'    => 'required|string|max:255',
             'description' => 'required|string',
             'github_link' => 'nullable|url',
             'demo_link'   => 'nullable|url',
@@ -248,6 +249,7 @@ class AdminController extends Controller
 
         Technology::create([
             'name'        => $request->name,
+            'category'    => $request->category,
             'stack_id'    => $request->stack_id,
             'description' => $request->description,
             'github_link' => $request->github_link,
@@ -262,13 +264,14 @@ class AdminController extends Controller
     }
 
 
-    public function UpdateTechnology(Request $request)
+        public function UpdateTechnology(Request $request)
     {
         $id = $request->input('id');
 
         $request->validate([
             'name'        => 'required|string|max:255',
-            'stack_id'    => 'required|exists:stacks,id',
+            'category'    => 'required|string|max:255',
+            'stack_id'    => 'required|string|max:255',
             'description' => 'required|string',
             'github_link' => 'nullable|url',
             'demo_link'   => 'nullable|url',
@@ -279,6 +282,7 @@ class AdminController extends Controller
 
         $data = [
             'name'        => $request->name,
+            'category'    => $request->category,
             'stack_id'    => $request->stack_id,
             'description' => $request->description,
             'github_link' => $request->github_link,
@@ -300,12 +304,64 @@ class AdminController extends Controller
     }
 
 
-    public function DeleteTechnology($id)
+        public function DeleteTechnology($id)
     {
         $item = Technology::findOrFail($id);
         $item->delete();
         return response()->json(['success' => true]);
     }  
+
+    public function AddTechnologyImage(Request $request, $id)
+    {
+        Technology::findOrFail($id);
+
+        $existingCount = \App\Models\TechnologyImage::where('technology_id', $id)->count();
+
+        $request->validate([
+            'images'   => 'required|array',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+        ]);
+
+        $newCount = count($request->file('images'));
+
+        if ($existingCount + $newCount > 10) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Maksimal 10 gambar per proyek. Sisa slot: ' . max(0, 10 - $existingCount),
+            ], 422);
+        }
+
+        $uploaded = [];
+
+        foreach ($request->file('images') as $file) {
+            if ($file->isValid()) {
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path('upload'), $filename);
+
+                $image = \App\Models\TechnologyImage::create([
+                    'technology_id' => $id,
+                    'image'         => $filename,
+                ]);
+
+                $uploaded[] = [
+                    'id'  => $image->id,
+                    'url' => asset('upload/' . $filename),
+                ];
+            }
+        }
+
+        return response()->json([
+            'success' => true,
+            'images'  => $uploaded,
+        ]);
+    }
+
+    public function DeleteTechnologyImage($id)
+    {
+        $item = \App\Models\TechnologyImage::findOrFail($id);
+        $item->delete();
+        return response()->json(['success' => true]);
+    }
 
     public function FAQ()
     {
@@ -369,7 +425,7 @@ class AdminController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:5120',
         ]);
 
         $logo = null;
@@ -443,7 +499,8 @@ class AdminController extends Controller
 
     public function AddProduct(Request $request)
     {
-        $request->validate([
+
+    $request->validate([
             'avatar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust the validation rules as needed
         ]);
 
@@ -455,7 +512,7 @@ class AdminController extends Controller
             $msg = "Failed to upload image";
         }
 
-        Product::create([
+        $product = Product::create([
             'stack_id' => $request->stack_id,
             'name' => $request->name,
             'avatar' => $avatar,

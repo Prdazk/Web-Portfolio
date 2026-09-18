@@ -39,6 +39,15 @@
                             <div class="modal-body">
 
                                 <form method="POST" action="/admin/add-product" enctype="multipart/form-data">
+                                    @if ($errors->any())
+                                        <div class="alert alert-danger">
+                                            <ul class="mb-0">
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
                                     {{ @csrf_field() }}
 
                                     <div class="col-md-12">

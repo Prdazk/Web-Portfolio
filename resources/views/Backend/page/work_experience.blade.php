@@ -1,5 +1,30 @@
 @extends('Backend.master')
 @section('main')
+    <style>
+        .responsibility-cell {
+            max-width: 300px;      /* atur sesuai lebar kolom yang diinginkan */
+            max-height: 150px;     /* batas tinggi, kalau lebih akan discroll */
+            overflow-y: auto;
+            overflow-x: hidden;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            white-space: normal;
+        }
+
+        .responsibility-cell p,
+        .responsibility-cell li {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        #example th,
+        #example td {
+            word-wrap: break-word;
+            vertical-align: top;
+        }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/41.3.1/classic/ckeditor.js"></script>
@@ -121,7 +146,11 @@
 
                                     <td>{{ $start }} s/d {{ $end }}</td>
 
-                                    <td>{!! $item->responsiblity !!}</td>
+                                    <td>
+                                        <div class="responsibility-cell">
+                                            {!! $item->responsiblity !!}
+                                        </div>
+                                    </td>
 
                                     <td>
                                         <a href="/admin/edit/experience/{{ $item->id }}" class="btn btn-info"
